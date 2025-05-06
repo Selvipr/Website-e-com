@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shopping Cart - Thiruwear</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="bg-dark text-white p-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h3">Thiruwear</h1>
+            <nav>
+                <a href="index.html" class="text-white me-3">Home</a>
+                <a href="products.html" class="text-white me-3">Products</a>
+                <a href="cart.html" class="text-white me-3">Cart</a>
+                <a href="login.html" class="text-white">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <h2>Your Shopping Cart</h2>
+        <div id="cart-container">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div id="cart-summary" class="mt-4">
+            <!-- Cart summary and checkout button -->
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        &copy; 2024 Thiruwear. All rights reserved.
+    </footer>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                title: "Cotton Saree",
+                price: 1200,
+                image: "https://via.placeholder.com/200x180?text=Cotton+Saree",
+                description: "Elegant cotton saree perfect for daily wear."
+            },
+            {
+                id: 2,
+                title: "Silk Fabric",
+                price: 1500,
+                image: "https://via.placeholder.com/200x180?text=Silk+Fabric",
+                description: "Premium quality silk fabric for special occasions."
+            },
+            {
+                id: 3,
+                title: "Men's Shirt Fabric",
+                price: 800,
+                image: "https://via.placeholder.com/200x180?text=Men%27s+Shirt+Fabric",
+                description: "Soft and durable fabric for men's shirts."
+            },
+            {
+                id: 4,
+                title: "Kids' Dress Material",
+                price: 600,
+                image: "https://via.placeholder.com/200x180?text=Kids+Dress+Material",
+                description: "Colorful and comfortable fabric for kids."
+            }
+        ];
+
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('cart-container');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p>Your cart is empty.</p>';
+                document.getElementById('cart-summary').innerHTML = '';
+                return;
+            }
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id);
+                if (!product) return;
+
+                const itemTotal = product.price * item.quantity;
+                total += itemTotal;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'd-flex align-items-center mb-3 border-bottom pb-3';
+
+                itemDiv.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" style="width: 100px; height: 90px; object-fit: contain;" class="me-3" />
+                    <div class="flex-grow-1">
+                        <h5>${product.title}</h5>
+                        <p>Price: ₹${product.price}</p>
+                        <p>Quantity: 
+                            <button class="btn btn-sm btn-outline-secondary me-1" onclick="updateQuantity(${product.id}, -1)">-</button>
+                            ${item.quantity}
+                            <button class="btn btn-sm btn-outline-secondary ms-1" onclick="updateQuantity(${product.id}, 1)">+</button>
+                        </p>
+                    </div>
+                    <div>
+                        <p>Total: ₹${itemTotal}</p>
+                        <button class="btn btn-danger btn-sm" onclick="removeFromCart(${product.id})">Remove</button>
+                    </div>
+                `;
+
+                container.appendChild(itemDiv);
+            });
+
+            document.getElementById('cart-summary').innerHTML = `
+                <h4>Total Amount: ₹${total}</h4>
+                <button class="btn btn-primary" onclick="checkout()">Proceed to Checkout</button>
+            `;
+        }
+
+        function updateQuantity(productId, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += change;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function removeFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(i => i.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function checkout() {
+            alert('Checkout functionality is not implemented in this demo.');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+</body>
+</html>

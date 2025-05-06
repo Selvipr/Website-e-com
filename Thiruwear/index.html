@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thiruwear - Local Textile E-commerce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Thiruwear</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                            <li><a class="dropdown-item" href="products.html?category=sarees">Sarees</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=fabrics">Fabrics</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=mens">Men's Wear</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=kids">Kids' Wear</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-3" role="search" id="searchForm">
+                    <input class="form-control form-control-sm me-2" type="search" placeholder="Search products" aria-label="Search" id="searchInput" />
+                    <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="address.html">Addresses</a></li>
+                            <li><a class="dropdown-item" href="order-tracking.html">Order Tracking</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <section class="p-5 mb-4 bg-light rounded-3 featured-hero text-center">
+            <div class="container-fluid py-5">
+                <h1 class="display-4 fw-bold mb-3">Welcome to Thiruwear</h1>
+                <p class="col-md-8 fs-5 mx-auto mb-4">Your local textile store in Tirupur. Discover the best fabrics and clothing at great prices.</p>
+                <a href="products.html" class="btn btn-primary btn-lg px-5 py-3">Shop Now</a>
+            </div>
+        </section>
+
+        <section class="container mb-5">
+            <h2 class="mb-4 text-center">Shop by Categories</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=sarees" class="category-card d-block text-center p-3 bg-white rounded shadow-sm text-decoration-none">
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=300&q=80" alt="Sarees" class="img-fluid rounded mb-2" />
+                        <h5 class="mb-0 text-dark">Sarees</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=fabrics" class="category-card d-block text-center p-3 bg-white rounded shadow-sm text-decoration-none">
+                        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=300&q=80" alt="Fabrics" class="img-fluid rounded mb-2" />
+                        <h5 class="mb-0 text-dark">Fabrics</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=mens" class="category-card d-block text-center p-3 bg-white rounded shadow-sm text-decoration-none">
+                        <img src="https://images.unsplash.com/photo-1520975698516-3a1a7a7a7a7a?auto=format&fit=crop&w=300&q=80" alt="Men's Wear" class="img-fluid rounded mb-2" />
+                        <h5 class="mb-0 text-dark">Men's Wear</h5>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="products.html?category=kids" class="category-card d-block text-center p-3 bg-white rounded shadow-sm text-decoration-none">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&q=80" alt="Kids' Wear" class="img-fluid rounded mb-2" />
+                        <h5 class="mb-0 text-dark">Kids' Wear</h5>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mb-5">
+            <h2 class="mb-4 text-center">What Our Customers Say</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="testimonial p-4 bg-white rounded shadow-sm">
+                        <p>"Thiruwear has the best quality fabrics. Highly recommended!"</p>
+                        <h6 class="mb-0">- Priya S.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial p-4 bg-white rounded shadow-sm">
+                        <p>"Amazing variety and great prices. I love shopping here."</p>
+                        <h6 class="mb-0">- Arjun K.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial p-4 bg-white rounded shadow-sm">
+                        <p>"Fast delivery and excellent customer service."</p>
+                        <h6 class="mb-0">- Meena R.</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2>Featured Products</h2>
+        <div id="featured-products" class="row gy-4">
+            <!-- Featured products will be loaded here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="products.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dynamic background gradient on page load
+        const gradients = [
+            'linear-gradient(135deg, #ffecd2, #fcb69f)',
+            'linear-gradient(135deg, #a1c4fd, #c2e9fb)',
+            'linear-gradient(135deg, #fbc2eb, #a6c1ee)',
+            'linear-gradient(135deg, #fad0c4, #ffd1ff)',
+            'linear-gradient(135deg, #ff9a9e, #fecfef)',
+            'linear-gradient(135deg, #f6d365, #fda085)'
+        ];
+
+        function setRandomBackground() {
+            const body = document.body;
+            const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+            body.style.background = randomGradient;
+        }
+
+        document.addEventListener('DOMContentLoaded', setRandomBackground);
+    </script>
+</body>
+</html>

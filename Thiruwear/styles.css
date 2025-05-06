@@ -1,0 +1,134 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    color: #333;
+    perspective: 1200px;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+header {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform-style: preserve-3d;
+    /* Removed animation and transition for header */
+}
+
+/* Removed header:hover animation */
+
+/* Navbar custom styles */
+.navbar-nav .nav-link {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #ffc107; /* Bootstrap warning color for highlight */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    transition: box-shadow 0.3s ease, transform 0.5s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transform-style: preserve-3d;
+}
+
+.product-card:hover {
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    transform: rotateY(15deg) rotateX(10deg) translateZ(20px);
+    cursor: pointer;
+}
+
+.product-image {
+    max-height: 180px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.product-card:hover .product-image {
+    transform: translateZ(30px) rotateY(10deg);
+}
+
+.product-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.product-price {
+    font-size: 1.3rem;
+    color: #007bff;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.btn-add-cart {
+    align-self: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+    border-radius: 25px;
+}
+
+.btn-add-cart:hover {
+    transform: translateZ(15px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,123,255,0.6);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    }
+}
+
+.featured-hero {
+    animation: float 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: white;
+    padding: 3rem;
+    margin-bottom: 2rem;
+}
+
+.featured-hero h1, .featured-hero p {
+    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

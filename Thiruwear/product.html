@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Details - Thiruwear</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="bg-dark text-white p-3">
+        <div class="container d-flex justify-content-between align-items-center flex-wrap">
+            <h1 class="h3">Thiruwear</h1>
+            <nav class="d-flex align-items-center flex-wrap">
+                <a href="index.html" class="text-white me-3">Home</a>
+                <a href="products.html" class="text-white me-3">Products</a>
+                <div class="dropdown me-3">
+                    <a class="text-white dropdown-toggle" href="#" role="button" id="categoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                        <li><a class="dropdown-item" href="products.html?category=sarees">Sarees</a></li>
+                        <li><a class="dropdown-item" href="products.html?category=fabrics">Fabrics</a></li>
+                        <li><a class="dropdown-item" href="products.html?category=mens">Men's Wear</a></li>
+                        <li><a class="dropdown-item" href="products.html?category=kids">Kids' Wear</a></li>
+                    </ul>
+                </div>
+                <a href="cart.html" class="text-white me-3">Cart</a>
+                <a href="login.html" class="text-white me-3">Login</a>
+                <form class="d-flex" role="search" id="searchForm">
+                    <input class="form-control form-control-sm me-2" type="search" placeholder="Search products" aria-label="Search" id="searchInput" />
+                    <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <div id="product-detail" class="row">
+            <!-- Product details will be loaded here -->
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        &copy; 2024 Thiruwear. All rights reserved.
+    </footer>
+
+    <script>
+        // Sample products data (same as products.js)
+        const products = [
+            {
+                id: 1,
+                title: "Cotton Saree",
+                price: 1200,
+                image: "https://via.placeholder.com/400x360?text=Cotton+Saree",
+                description: "Elegant cotton saree perfect for daily wear."
+            },
+            {
+                id: 2,
+                title: "Silk Fabric",
+                price: 1500,
+                image: "https://via.placeholder.com/400x360?text=Silk+Fabric",
+                description: "Premium quality silk fabric for special occasions."
+            },
+            {
+                id: 3,
+                title: "Men's Shirt Fabric",
+                price: 800,
+                image: "https://via.placeholder.com/400x360?text=Men%27s+Shirt+Fabric",
+                description: "Soft and durable fabric for men's shirts."
+            },
+            {
+                id: 4,
+                title: "Kids' Dress Material",
+                price: 600,
+                image: "https://via.placeholder.com/400x360?text=Kids+Dress+Material",
+                description: "Colorful and comfortable fabric for kids."
+            }
+        ];
+
+        function getProductIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('id'));
+        }
+
+        function loadProductDetails() {
+            const productId = getProductIdFromUrl();
+            const product = products.find(p => p.id === productId);
+            const container = document.getElementById('product-detail');
+
+            if (!product) {
+                container.innerHTML = '<p>Product not found.</p>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="col-md-6">
+                    <img src="${product.image}" alt="${product.title}" class="img-fluid" />
+                </div>
+                <div class="col-md-6">
+                    <h2>${product.title}</h2>
+                    <p class="text-primary fs-4">₹${product.price}</p>
+                    <p>${product.description}</p>
+                    <button id="add-to-cart" class="btn btn-success">Add to Cart</button>
+                </div>
+            `;
+
+            document.getElementById('add-to-cart').addEventListener('click', () => {
+                addToCart(product.id);
+            });
+        }
+
+        function addToCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Product added to cart!');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProductDetails);
+    </script>
+</body>
+</html>
